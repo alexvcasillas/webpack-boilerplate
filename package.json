@@ -1,0 +1,19 @@
+{
+  "name": "webpack-demo",
+  "version": "0.0.1",
+  "description": "Webpack Tryouts",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "build:watch": "yarn build -- --watch",
+    "build:watch:dev": "yarn build:watch -- --env.env=dev",
+    "build:watch:prod": "yarn build:watch -- --env.env=prod"
+  },
+  "author": "Alex Casillas <alexvcasillas@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "webpack": "^3.4.1",
+    "webpack-dev-server": "^2.6.1",
+    "webpack-merge": "^4.1.0"
+  }
+}
