@@ -4,16 +4,56 @@
   "description": "Webpack Tryouts",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "build:watch": "yarn build -- --watch",
-    "build:watch:dev": "yarn build:watch -- --env.env=dev",
-    "build:watch:prod": "yarn build:watch -- --env.env=prod"
+    "dev": "yarn webpack-dev-server -- --env.env=dev",
+    "build": "yarn webpack -- --env.env=prod",
+    "debug": " node --inspect --debug-brk ./node_modules/webpack/bin/webpack.js",
+    "webpack": "node ./node_modules/webpack/bin/webpack.js",
+    "webpack-dev-server": "webpack-dev-server --progress --port=3000",
+    "webpack-defaults": "webpack-defaults"
   },
   "author": "Alex Casillas <alexvcasillas@gmail.com>",
   "license": "MIT",
-  "dependencies": {
-    "webpack": "^3.4.1",
-    "webpack-dev-server": "^2.6.1",
+  "devDependencies": {
+    "autoprefixer": "^7.1.2",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^7.2.3",
+    "babel-jest": "^20.0.3",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-react-app": "^3.0.2",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-runtime": "^6.26.0",
+    "babili-webpack-plugin": "^0.1.2",
+    "case-sensitive-paths-webpack-plugin": "^2.1.1",
+    "clean-webpack-plugin": "^0.1.16",
+    "cross-env": "^5.0.5",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^0.11.2",
+    "html-webpack-plugin": "^2.30.1",
+    "lint-staged": "^3.4.1",
+    "react-transform-hmr": "^1.0.4",
+    "url-loader": "^0.5.9",
+    "webpack": "^3.5.5",
+    "webpack-bundle-analyzer": "^2.9.0",
+    "webpack-dashboard": "^1.0.0-2",
+    "webpack-dev-server": "^2.7.1",
     "webpack-merge": "^4.1.0"
+  },
+  "dependencies": {
+    "react": "next",
+    "react-dom": "next"
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ]
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --single-quote --bracket-spacing=false --write",
+      "git add"
+    ]
   }
 }
