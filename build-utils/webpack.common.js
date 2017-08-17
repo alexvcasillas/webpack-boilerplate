@@ -31,9 +31,19 @@ const config = {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendors',
       filename: '[hash].vendors.js',
-      minChunks: function(module) {
+      minChunks: function(module, count) {
+        // This prevents stylesheet resources with the .css or .scss extension
+        // from being moved from their original chunk to the vendor chunk
+        if (module.resource && /^.*\.(css|scss)$/.test(module.resource)) {
+          return false;
+        }
         // this assumes your vendor imports exist in the node_modules directory
-        return module.context && module.context.indexOf('node_modules') !== -1;
+        // and appears at least in two files
+        return (
+          module.context &&
+          module.context.indexOf('node_modules') !== -1 &&
+          count === 2
+        );
       }
     })
   ]
